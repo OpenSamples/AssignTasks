@@ -1,12 +1,33 @@
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+@Entity
 public class Task {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	@NotEmpty
 	private String date;
+	
+	@NotEmpty
 	private String startTime;
+	
+	@NotEmpty
 	private String stopTime;
+	
+	@NotEmpty
 	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name="USER_EMAIL")
 	private User user;
 	
 	public Long getId() {
