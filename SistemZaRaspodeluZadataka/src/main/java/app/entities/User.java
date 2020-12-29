@@ -30,13 +30,14 @@ public class User {
 	@Size(min=4)
 	private String password;
 	
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	private List<Task> tasks;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="USER_ROLES", joinColumns= {
-			@JoinColumn(name="USER_EMAIL", referencedColumnName="email")}, inverseJoinColumns = {
-					@JoinColumn(name="ROLE_NAME", referencedColumnName="name")})
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "USER_ROLES", joinColumns= {
+			@JoinColumn(name = "USER_EMAIL", referencedColumnName = "email")}, inverseJoinColumns = {
+					@JoinColumn(name = "ROLE_NAME", referencedColumnName = "name")})
+	
 	private List<Role> roles;
 	
 	public String getEmail() {
@@ -70,10 +71,10 @@ public class User {
 		this.roles = roles;
 	}
 	
-	public User(String name, String password, String email) {
+	public User(String email, String name, String password) {
+		this.email = email;
 		this.name = name;
 		this.password = password;
-		this.email = email;
 	}
 	
 	public User() {}

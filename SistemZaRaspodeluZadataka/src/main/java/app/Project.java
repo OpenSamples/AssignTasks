@@ -20,9 +20,9 @@ public class Project implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		User newAdmin = new User("admin@mail.com", "Admin", "123456");
-		userService.createAdmin(newAdmin);
+		{
+			User newAdmin = new User("admin@mail.com", "Admin", "123456");
+			userService.createAdmin(newAdmin);
+		}
 	}
-
 }
