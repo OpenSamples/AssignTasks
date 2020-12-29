@@ -54,7 +54,7 @@ class SistemZaRaspodeluZadatakaApplicationTests {
 	
 	@Test
 	public void testTask() {
-		User user = userService.findOne("testUser@gmail.com");
+		User user = userService.findOne("testUser@mail.com");
 		List<Task> task = taskService.findUserTask(user);
 		assertNotNull(task);
 	}

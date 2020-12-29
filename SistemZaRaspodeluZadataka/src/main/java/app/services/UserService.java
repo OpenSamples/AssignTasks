@@ -38,11 +38,11 @@ public class UserService {
 	}
 	
 	public User findOne(String email) {
-		return userRepository.findById(email).orElseThrow();
+		return userRepository.findById(email).get();
 	}
 	
 	public boolean isUserPresent(String email) {
-		User user = userRepository.findById(email).orElseThrow();
+		User user = userRepository.findById(email).get();
 		if (user != null) return true;
 		return false;
 	}
