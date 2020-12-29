@@ -1,4 +1,4 @@
-package app.services;
+package com.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import app.entities.Role;
-import app.entities.User;
-import app.repositories.UserRepository;
+import com.app.entities.Role;
+import com.app.entities.User;
+import com.app.repositories.UserRepository;
 
 @Service
 public class UserService {

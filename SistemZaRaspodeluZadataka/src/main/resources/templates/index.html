@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{fragments/main_layout}">
+	<head>
+		<title>Index Page</title>
+			<link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
+		<link rel="stylesheet" href="../static/css/materia/bootstrap.min.css" th:href="@{css/materia/bootstrap.min.css}" />
+		<script th:src="@{webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{webjars/bootstrap/bootstrap.min.js}"></script>
+	</head>
+	<body>
+<div th:replace="fragments/header.html :: header">
+		
+		</div>
+
+		
+		<div th:replace="fragments/footer.html :: footer">
+		
+		</div>
+
+		<div layout:fragment="content" class="container">
+			<div class="jumbotron">
+				<p>asdf asdf asdf asd fasdf</p>
+				<h1>Welcome to Thymeleaf Spring Boot</h1>
+<h2>
+    <span>Hello, <th:block th:text="${name}">[name]</th:block></span>
+</h2>
+			</div>
+		</div>
+		
+
+	</body>
+</html>

@@ -1,13 +1,13 @@
-package app.services;
+package com.app.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.entities.Task;
-import app.entities.User;
-import app.repositories.TaskRepository;
+import com.app.entities.Task;
+import com.app.entities.User;
+import com.app.repositories.TaskRepository;
 
 @Service
 public class TaskService {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}" />
+		<link rel="stylesheet" href="../../static/css/materia/bootstrap.min.css" th:href="@{css/materia/bootstrap.min.css}" />
+		<script th:src="@{webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{webjars/bootstrap/bootstrap.min.js}"></script>
+	</head>
+	<body>
+		<div th:replace="header.html :: header">
+		
+		</div>
+		
+		<div layout:fragment="content">
+		
+		</div>
+		
+		<div th:replace="footer.html :: footer">
+		
+		</div>
+	</body>
+</html>

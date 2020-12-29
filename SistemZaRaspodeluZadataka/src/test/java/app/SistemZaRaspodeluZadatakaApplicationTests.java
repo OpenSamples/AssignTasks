@@ -12,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import app.entities.Task;
-import app.entities.User;
-import app.services.TaskService;
-import app.services.UserService;
+import com.app.entities.Task;
+import com.app.entities.User;
+import com.app.services.TaskService;
+import com.app.services.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
