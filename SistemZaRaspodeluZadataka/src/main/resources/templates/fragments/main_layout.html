@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<link rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}" />
-		<link rel="stylesheet" href="../../static/css/materia/bootstrap.min.css" th:href="@{css/materia/bootstrap.min.css}" />
+		<link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}" />
+		<link rel="stylesheet" href="../static/css/materia/bootstrap.min.css" th:href="@{css/materia/bootstrap.min.css}" />
 		<script th:src="@{webjars/jquery/jquery.min.js}"></script>
 		<script th:src="@{webjars/bootstrap/bootstrap.min.js}"></script>
 	</head>
 	<body>
-		<div th:replace="header.html :: header">
+		<div th:replace="fragments/header :: header">
 		
 		</div>
 		
@@ -15,7 +16,7 @@
 		
 		</div>
 		
-		<div th:replace="footer.html :: footer">
+		<div th:replace="fragments/footer :: footer">
 		
 		</div>
 	</body>
