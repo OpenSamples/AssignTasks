@@ -2,26 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	  layout:decorate="~{fragments/main_layout}">
-	    <th:block layout:fragment="css"> </th:block>
 
-  <th:block layout:fragment="script"> </th:block>
 	<head>
 		<title>Index Page</title>
-
 	</head>
 	<body>
-
-
-		<div layout:fragment="content" class="container">
+		<div layout:fragment="content" class="container mySpace">
 			<div class="jumbotron">
-				<p>asdf asdf asdf asd fasdf</p>
 				<h1>Welcome to Thymeleaf Spring Boot</h1>
-<h2>
-    <span>Hello, <th:block th:text="${name}">[name]</th:block></span>
-</h2>
+				<p>asdf asdf asdf asd fasdf</p>
 			</div>
 		</div>
-		
-
 	</body>
 </html>
