@@ -44,10 +44,10 @@ public class UserService {
 	
 	public boolean isUserPresent(String email) {
 		Optional<User> user = userRepository.findById(email);
-		if (!user.isPresent()) {
-			return false;
+		if (user.isPresent()) {
+			return true;
 		} 
-		return true;
+		return false;
 	}
 	
 	public List<User> findAll() {
