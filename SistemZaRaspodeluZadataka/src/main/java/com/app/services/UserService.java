@@ -2,6 +2,7 @@ package com.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,7 +15,7 @@ import com.app.repositories.UserRepository;
 @Service
 public class UserService {
 
-	@Autowired(required=true)
+	@Autowired
 	private UserRepository userRepository;
 	
 	public void createUser(User user) {
@@ -38,13 +39,15 @@ public class UserService {
 	}
 	
 	public User findOne(String email) {
-		return userRepository.findById(email).get();
+		return userRepository.findById(email).orElseThrow();
 	}
 	
 	public boolean isUserPresent(String email) {
-		User user = userRepository.findById(email).get();
-		if (user != null) return true;
-		return false;
+		Optional<User> user = userRepository.findById(email);
+		if (!user.isPresent()) {
+			return false;
+		} 
+		return true;
 	}
 	
 	public List<User> findAll() {
