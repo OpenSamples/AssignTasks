@@ -1,4 +1,4 @@
-package com.app.services;
+package com.app.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.entities.Task;
+import com.app.services.TaskService;
+import com.app.services.UserService;
 
 @Controller
 public class TaskController {
