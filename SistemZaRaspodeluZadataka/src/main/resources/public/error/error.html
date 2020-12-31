@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
+
+<head>
+<title>Greska</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mySpace">
+		Dogodila se greska |<span th:text="${message}"></span>| <span
+			th:text="${status}" class="text text-danger"></span>
+		<div>Molimo Vas kontaktirajte VTS.</div>
+	</div>
+</body>
+</html>

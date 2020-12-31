@@ -15,4 +15,9 @@ public class IndexController {
 	public String showLoginForm() {
 		return "views/loginForm";
 	}
+	
+	@GetMapping("/error")
+	 public String getDefaultPage() {
+	  return "error";
+	 }
 }
