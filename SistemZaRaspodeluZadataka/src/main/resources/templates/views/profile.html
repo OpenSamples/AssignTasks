@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{fragments/main_layout}">
+
+	<head>
+		<title>Profil</title>
+	</head>
+	<body>
+		<div layout:fragment="content" class="container mySpace">
+			<div class="card">
+				<div class="card card-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Datum</th>
+								<th>Pocetak Zadatka</th>
+								<th>Kraj Zadatka</th>
+								<th>Opis Zadatka</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="task:${task}">
+								<td th:text="${task.date}"></td>
+								<td th:text="${task.startTime}"></td>
+								<td th:text="${task.stopTime}"></td>
+								<td th:text="${task.description}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
