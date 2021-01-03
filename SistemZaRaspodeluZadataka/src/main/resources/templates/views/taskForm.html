@@ -9,6 +9,7 @@
 <body>
 	<div layout:fragment="content" class="container mySpace">
 		<form th:action="@{/addTask}" th:object="${task}" method="post">
+			<input type="hidden" th:field="*{id}"/>
 			<div class="form-group">
 				<label for="date" class="form-control-label">Datum</label> <input
 					type="date" class="form-control" th:field="*{date}" id="date" />
