@@ -37,14 +37,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/register", "/", "/about", "/login", "/css/**", "/webjars/**").permitAll()
+		http.authorizeRequests()
+				.antMatchers("/register", "/", "/about", "/login", "/css/**", "/webjars/**").permitAll()
 				.antMatchers("/profile").hasAnyRole("USER", "ADMIN")
-//				.antMatchers("/users", "/addTask", "/updateTask", "/updateTask/**", "/deleteTask","/deleteTask/**").hasRole("ADMIN")
-				.antMatchers("/users", "/addTask", "/updateTask", "/deleteTask").hasRole("ADMIN")
-				.and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/profile").and().logout()
+				.antMatchers("/users", "/addTask", "/updateTask", "/updateTask/**", "/deleteTask", "/tasks/**").hasRole("ADMIN")
+				.and().formLogin().loginPage("/login").permitAll()
+				.defaultSuccessUrl("/profile").and().logout()
 				.logoutSuccessUrl("/login");
-	}
-	
+	}		
+
 	@Bean
 	public SpringSecurityDialect springSecurityDialect() {
 	    return new SpringSecurityDialect();

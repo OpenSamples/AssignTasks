@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.entities.Task;
 import com.app.entities.User;
@@ -35,7 +34,7 @@ public class TaskController {
 		return "views/taskForm";
 	}
 
-	@RequestMapping("/tasks/{userEmail}")
+	@GetMapping(value= "/tasks/{userEmail}")
 	public String showUserTasks(Model model, @PathVariable String userEmail) {
 		User user = userService.findOne(userEmail);
 		if (user != null) {
@@ -43,8 +42,9 @@ public class TaskController {
 			model.addAttribute("tasks", userTasks);
 			model.addAttribute("user", user);
 			return "views/userTasks";
-		}
-		return "views/list";
+		} else {
+			return "views/list";
+		}		
 	}
 
 	@PostMapping("/addTask")
@@ -54,27 +54,29 @@ public class TaskController {
 		}
 		String email = (String) session.getAttribute("email");
 		taskService.addTask(task, userService.findOne(email));
-
+		if (task.getId() != null) {
+			return "redirect:/tasks/" + email;
+		}
 		return "redirect:/users";
 	}
 
 	@GetMapping("/updateTask/{taskId}")
-	public String goToUpdateTask(@PathVariable("taskId") Long taskId, Model model,
-			@Valid Task task, BindingResult bindingResult, HttpSession seesion) {		
-		model.addAttribute("task", taskService.findTaskById(taskId));
+	public String goToUpdateTask(@PathVariable("taskId") Long taskId, Model model, HttpSession session) {
+		Task task = taskService.findTaskById(taskId);
+		session.setAttribute("email", task.getUser().getEmail());
+		model.addAttribute("task", task);
 		return "views/taskForm";
 	}
 
 	@GetMapping("/deleteTask/{taskId}")
 	public String deleteTask(@PathVariable("taskId") Long taskId, Model model) {
 		Task task = taskService.findTaskById(taskId);
-		if (task != null) {
-			taskService.deleteTask(task);
+		if (task != null && taskService.deleteTask(task)) {
 			return "redirect:/tasks/" + task.getUser().getEmail();
 		} else {
 			model.addAttribute("errorMessage", true);
+			return "views/userTasks";
 		}
-		return "views/userTasks";
 	}
 
 }

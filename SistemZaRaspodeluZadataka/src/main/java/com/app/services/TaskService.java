@@ -18,7 +18,7 @@ public class TaskService {
 
 	public Task findTaskById(Long id) {
 		return taskRepository.findById(id)
-				.orElseThrow(() -> new NoSuchElementException("Ne posotji task sa ID"));		
+				.orElseThrow(() -> new NoSuchElementException("Ne postoji task za ID=" + id));		
 	}
 	
 	public void addTask(Task task, User user) {
@@ -32,9 +32,7 @@ public class TaskService {
 	
 	public List<Task> findAllTasksByUser(String userEmail) {
 		return taskRepository.findAllTasksByUser(userEmail);
-	}
-	
-	
+	}	
 
 	public boolean updateTask(Task task) {
 		Task existingTask = taskRepository.getOne(task.getId());

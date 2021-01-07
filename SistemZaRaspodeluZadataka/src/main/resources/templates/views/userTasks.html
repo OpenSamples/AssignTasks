@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{fragments/main_layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
 
 <head>
 <title>Lista zadataka korisnika</title>
 </head>
 <body>
 	<div layout:fragment="content" class="container mySpace">
-	<div class="alert alert-info" th:if="${errorMessage}">
-			<p class="text text-center">Greška, nije moguće obrisati izabrani zadatak!</p>
+		<div class="alert alert-info" th:if="${errorMessage}">
+			<p class="text text-center">Greška, nije moguće obrisati izabrani
+				zadatak!</p>
 		</div>
 		<div class="card">
 			<div class="card card-body">
-				<table class="table table-hover">
+				<div th:if="${#lists.isEmpty(tasks)}">
+					<p>Korisnik <b>[[${user.name}]]</b> nema dodeljenih zadataka!</p>
+				</div>
+				<table class="table table-hover" th:if="${not #lists.isEmpty(tasks)}">
 					<thead>
 						<tr>
 							<th>Datum</th>

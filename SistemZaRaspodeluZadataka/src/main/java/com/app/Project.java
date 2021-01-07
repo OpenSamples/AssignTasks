@@ -20,13 +20,13 @@ public class Project implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User newAdmin = new User("admin@mail.com", "Admin", "123456");
+		User newAdmin = new User("admin@mail.com", "Pera Admin", "123456");
 		userService.createAdmin(newAdmin);
 		
 		// creating new Users with role USER
-		User newEmployee1 = new User("pera@gmail.com", "pera", "test123");
-		User newEmployee2 = new User("mica@yahoo.com", "mica", "test456");
-		User newEmployee3 = new User("djura@outlook.com", "djura", "test789");
+		User newEmployee1 = new User("pera@gmail.com", "Petar Peric", "test123");
+		User newEmployee2 = new User("mica@yahoo.com", "Milica Milic", "test456");
+		User newEmployee3 = new User("djura@outlook.com", "Djura Djuric", "test789");
 		userService.createUser(newEmployee1);
 		userService.createUser(newEmployee2);
 		userService.createUser(newEmployee3);		

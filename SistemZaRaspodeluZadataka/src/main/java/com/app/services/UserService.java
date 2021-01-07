@@ -39,7 +39,8 @@ public class UserService {
 	}
 
 	public User findOne(String email) {
-		return userRepository.findById(email)
+		return userRepository
+				.findById(email)
 				.orElseThrow(() -> new IllegalArgumentException("User email nije validan: " + email));
 	}
 

@@ -20,7 +20,7 @@ import com.app.services.UserService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class SistemZaRaspodeluZadatakaApplicationTests {
-
+/*
 	@Autowired
 	private UserService userService;
 
@@ -58,15 +58,5 @@ class SistemZaRaspodeluZadatakaApplicationTests {
 		List<Task> task = taskService.findUserTask(user);
 		assertNotNull(task);
 	}
+	*/
 }
-
-
-
-
-
-
-
-
-
-
-
