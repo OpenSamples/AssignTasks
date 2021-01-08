@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{fragments/main_layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{fragments/main_layout}">
 
-	<head>
-		<title>Lista Korisnika</title>
-	</head>
-	<body>
-		<div layout:fragment="content" class="container mySpace">
+<head>
+<title>Lista Korisnika</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container mySpace">
 		<form action="users" class="form-inline">
 			<div class="form-group mb-2">
-				<input type="text" class="form-control" name="name" placeholder="Pretraga Korisnika" />
+				<input type="text" class="form-control searchName" name="name" placeholder="Ime i/ili prezime" /> 
 				<input type="submit" value="Pretraga" class="btn btn-primary" />
 			</div>
 		</form>
-			<div class="card">
-				<div class="card card-body">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Add</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="user:${users}">
-								<td th:text="${user.name}"></td>
-								<td th:text="${user.email}"></td>
-								<td><a th:href="@{/addTask(email=${user.email})}" class="btn btn-dark">Dodeli Zadatak</a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+		<div class="card">
+			<div class="card card-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Ime i Prezime</th>
+							<th>Email</th>
+							<th>Dodavanje</th>
+							<th>Prikazi Zadatke</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user:${users}">
+							<td th:text="${user.name}"></td>
+							<td th:text="${user.email}"></td>
+							<td><a th:href="@{/addTask(email=${user.email})}" class="btn btn-dark">Dodeli Zadatak</a></td>
+							<td><a th:href="@{/tasks/{userEmail}(userEmail=${user.email})}" class="btn btn-dark">Zadaci korisnika</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

@@ -13,16 +13,22 @@ public class Project implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Project.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		{
-			User newAdmin = new User("admin@mail.com", "Admin", "123456");
-			userService.createAdmin(newAdmin);
-		}
+		User newAdmin = new User("admin@mail.com", "Pera Admin", "123456");
+		userService.createAdmin(newAdmin);
+		
+		// creating new Users with role USER
+		User newEmployee1 = new User("pera@gmail.com", "Petar Peric", "test123");
+		User newEmployee2 = new User("mica@yahoo.com", "Milica Milic", "test456");
+		User newEmployee3 = new User("djura@outlook.com", "Djura Djuric", "test789");
+		userService.createUser(newEmployee1);
+		userService.createUser(newEmployee2);
+		userService.createUser(newEmployee3);		
 	}
 }

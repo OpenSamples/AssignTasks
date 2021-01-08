@@ -17,7 +17,7 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	public void createUser(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -27,7 +27,7 @@ public class UserService {
 		user.setRoles(roles);
 		userRepository.save(user);
 	}
-	
+
 	public void createAdmin(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -37,51 +37,26 @@ public class UserService {
 		user.setRoles(roles);
 		userRepository.save(user);
 	}
-	
+
 	public User findOne(String email) {
-		return userRepository.findById(email).orElseThrow();
+		return userRepository
+				.findById(email)
+				.orElseThrow(() -> new IllegalArgumentException("User email nije validan: " + email));
 	}
-	
+
 	public boolean isUserPresent(String email) {
 		Optional<User> user = userRepository.findById(email);
 		if (user.isPresent()) {
 			return true;
-		} 
+		}
 		return false;
 	}
-	
+
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
-	
+
 	public List<User> findByName(String name) {
 		return userRepository.findByNameLike("%" + name + "%");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
